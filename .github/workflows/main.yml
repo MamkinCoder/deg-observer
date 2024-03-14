@@ -21,8 +21,9 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << EOF
-            source ~/.bashrc
+            source ~/.nvm/nvm.sh
             nvm use
+            echo $PATH
             cd /home/deg-website/deg-observer      # Navigate to your project directory
             git pull origin main                    # Pull the latest changes
             npm install                             # Install dependencies
