@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Listbox, ListboxItem } from "@nextui-org/react";
 import { NextUIProvider } from "@nextui-org/react";
 
+type files = {
+  file: string;
+  description: string;
+}[];
+
 const HomePage = () => {
-  const [files, setFiles] = useState<string[]>([]);
+  const [files, setFiles] = useState<files>([]);
 
   useEffect(() => {
     async function fetchFiles() {
@@ -13,15 +18,12 @@ const HomePage = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data = await response.json(); // Assuming this returns an array of objects [{file: 'filename1.txt'}, {file: 'filename2.txt'}, ...]
-        // Transform the data to an array of strings
-        const fileNames = data.map((item: { file: string }) => item.file);
-        setFiles(fileNames);
+        const data = await response.json();
+        setFiles(data);
       } catch (error) {
         console.error("Failed to fetch files:", error);
       }
     }
-
     fetchFiles();
   }, []);
 
@@ -31,9 +33,9 @@ const HomePage = () => {
         <h1>Download Node Dumps:</h1>
         <Listbox aria-label="Files">
           {files.map((file, index) => (
-            <ListboxItem key={index}>
-              <a href={`/files/${file}`} download>
-                {file}
+            <ListboxItem key={index} description={file.description}>
+              <a href={`/files/${file.file}`} download>
+                {file.file}
               </a>
             </ListboxItem>
           ))}
