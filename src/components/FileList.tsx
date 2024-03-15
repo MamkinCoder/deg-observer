@@ -1,34 +1,40 @@
-import fs from "fs";
-import path from "path";
+"use client";
 import { Listbox, ListboxItem } from "@nextui-org/react";
+import { useState, useEffect } from "react";
+
+type files = {
+  file: string;
+  description: string;
+}[];
 
 export default function FileList() {
-  const directoryPath = path.join(process.cwd(), "public", "files");
-  const files = fs.readdirSync(directoryPath);
+  const [files, setFiles] = useState<files>([]);
+
+  useEffect(() => {
+    async function fetchFiles() {
+      try {
+        const response = await fetch("/api/listFiles");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setFiles(data);
+      } catch (error) {
+        console.error("Failed to fetch files:", error);
+      }
+    }
+    fetchFiles();
+  }, []);
 
   return (
-    <div>
-      <Listbox aria-label="Actions">
-        {files.map((file) => (
-          <ListboxItem key={file}>
-            <a href={`/files/${file}`} download>
-              {file}
-            </a>
-          </ListboxItem>
-        ))}
-      </Listbox>
-    </div>
-    // <div>
-    //   <h2>Доступные файлы</h2>
-    //   <List>
-    //     {files.map((file) => (
-    //       <List.Item key={file}>
-    //         <a href={`/files/${file}`} download>
-    //           {file}
-    //         </a>
-    //       </List.Item>
-    //     ))}
-    //   </List>
-    // </div>
+    <Listbox aria-label="Files">
+      {files.map((file, index) => (
+        <ListboxItem key={index} description={file.description}>
+          <a href={`/files/${file.file}`} download>
+            {file.file}
+          </a>
+        </ListboxItem>
+      ))}
+    </Listbox>
   );
 }
