@@ -1,6 +1,7 @@
 "use client";
 import { Listbox, ListboxItem } from "@nextui-org/react";
 import { useState, useEffect } from "react";
+import DownloadIcon from "./download";
 
 type files = {
   file: string;
@@ -29,8 +30,13 @@ export default function FileList() {
   return (
     <Listbox aria-label="Files">
       {files.map((file, index) => (
-        <ListboxItem key={index} description={file.description}>
-          <a href={`/files/${file.file}`} download>
+        <ListboxItem
+          key={index}
+          description={file.description}
+          startContent={<DownloadIcon />}
+          // onPress={}
+        >
+          <a href={`/api/getFiles/${file.file}`} download>
             {file.file}
           </a>
         </ListboxItem>
