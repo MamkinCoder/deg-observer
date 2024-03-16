@@ -16,52 +16,34 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
-
-// const FlourishEmbed: React.FC = () => {
-//   return (
-//     <>
-//       <iframe
-//         src="https://flo.uri.sh/visualisation/17171317/embed"
-//         title="Interactive or visual content"
-//         className="flourish-embed-iframe"
-//         frameBorder="0"
-//         scrolling="no"
-//         style={{ width: "100%", height: "600px" }}
-//         sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
-//       />
-//       <div style={{ width: "100%", marginTop: "4px", textAlign: "right" }}>
-//         <a
-//           className="flourish-credit"
-//           href="https://public.flourish.studio/visualisation/17171317/?utm_source=embed&utm_campaign=visualisation/17171317"
-//           target="_top"
-//           style={{ textDecoration: "none" }}
-//         >
-//           <img
-//             alt="Made with Flourish"
-//             src="https://public.flourish.studio/resources/made_with_flourish.svg"
-//             style={{
-//               width: "105px",
-//               height: "16px",
-//               border: "none",
-//               margin: "0",
-//             }}
-//           />
-//         </a>
-//       </div>
-//     </>
-//   );
-// };
+import { useState } from "react";
 
 const HomePage = () => {
+  const [selectedKeys, setSelectedKeys] = useState(
+    new Set<string>(["1"])
+  ) as any;
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
       <div className="col-span-1 md:col-span-2 text-3xl p-5">
         <h1>Анализ федерального ДЭГа</h1>
       </div>
       <Card className="col-span-1 md:col-span-1 min-h-[50vh]">
+        <CardHeader>
+          {/* <Accordion variant="bordered" disableIndicatorAnimation>
+            <AccordionItem title="Навигация в графане" indicator={<InfoIcon />}>
+              <div>
+                <ul className=" list-disc ml-4">
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                </ul>
+              </div>
+            </AccordionItem>
+          </Accordion> */}
+        </CardHeader>
         <CardBody>
           <div className="relative pt-[80%]">
-            {/* <FlourishEmbed /> */}
             <iframe
               id="contentFrame"
               src="https://losevpeter.ru/grafana/d/edfqkznlpa77ka/deg?orgId=1&kiosk"
@@ -72,8 +54,13 @@ const HomePage = () => {
       </Card>
       <Card className="col-span-1 md:col-span-1">
         <CardHeader>
-          <Accordion variant="light" disableIndicatorAnimation>
-            <AccordionItem title="Дампы" indicator={<InfoIcon />}>
+          <Accordion
+            variant="bordered"
+            disableIndicatorAnimation
+            selectedKeys={selectedKeys}
+            onSelectionChange={setSelectedKeys}
+          >
+            <AccordionItem key="1" title="Дампы" indicator={<InfoIcon />}>
               <p className=" text-small">
                 Есть 2 типа дампов: <br />
                 1) исходный, дамп снятый напрямую с ноды наблюдения без
@@ -108,7 +95,6 @@ const HomePage = () => {
                   <FileList format="raw" />
                 </TableCell>
                 <TableCell>
-                  {" "}
                   <FileList format="converted" />
                 </TableCell>
               </TableRow>
