@@ -2,19 +2,16 @@
 import { Listbox, ListboxItem } from "@nextui-org/react";
 import { useState, useEffect, useRef } from "react";
 import DownloadIcon from "./download";
+import { FileFormats, FilesTwoColumns, File } from "@/app/api/listFiles/types";
 
-type file = {
-  file: string;
-  description: string;
-};
+type FileListProps = { format: FileFormats };
 
-export default function FileList() {
+export default function FileList({ format }: FileListProps) {
   const [disabledIndexes, setDisabledIndexes] = useState<number[]>([]);
-  const [files, setFiles] = useState<file[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
 
   const shadowAnchorRef = useRef<HTMLAnchorElement[]>([]);
 
-  // Pre-allocate refs for each file
   useEffect(() => {
     shadowAnchorRef.current = shadowAnchorRef.current.slice(0, files.length);
   }, [files]);
@@ -26,8 +23,8 @@ export default function FileList() {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data = await response.json();
-        setFiles(data);
+        const data = (await response.json()) as FilesTwoColumns;
+        setFiles(data[format]);
       } catch (error) {
         console.error("Failed to fetch files:", error);
       }
@@ -35,7 +32,7 @@ export default function FileList() {
     fetchFiles();
   }, []);
 
-  const handlePress = (file: file, index: number): void => {
+  const handlePress = (file: File, index: number): void => {
     if (disabledIndexes.includes(index)) return;
 
     setDisabledIndexes((current) => [...current, index]);
@@ -66,7 +63,7 @@ export default function FileList() {
       {files.map((file, index) => (
         <a
           key={index}
-          href={`http://losevpeter.ru/dumps-server/${file.file}`}
+          href={`http://losevpeter.ru/dumps-server/${format}/${file.file}`}
           download
           ref={(el) =>
             (shadowAnchorRef.current[index] = el as HTMLAnchorElement)

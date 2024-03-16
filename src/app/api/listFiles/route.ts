@@ -3,25 +3,26 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
-  const directoryPath = "/mnt/HC_Volume_100473672/dumps-server";
+  const isDevelopment = process.env.NODE_ENV === "development";
+
+  let directoryPath = isDevelopment
+    ? path.join(process.cwd(), "public", "files")
+    : "/mnt/HC_Volume_100473672/dumps-server";
 
   try {
-    const fileNames = fs
-      .readdirSync(directoryPath)
-      .filter((file) => path.extname(file) !== ".txt");
-    const files = fileNames.map((file) => {
-      const descriptionFilePath = path.join(directoryPath, `${file}.txt`);
-      let description = "";
+    const rawDirectoryPath = path.join(directoryPath, "raw");
+    const convertedDirectoryPath = path.join(directoryPath, "converted");
 
-      try {
-        description = fs.readFileSync(descriptionFilePath, "utf8");
-      } catch (err) {
-        console.error("Описание не найдено для файла: " + file);
-      }
+    const rawFiles = getFilesFromDir(rawDirectoryPath);
+    const convertedFiles = getFilesFromDir(convertedDirectoryPath);
 
-      return { file, description };
-    });
+    const files = {
+      raw: rawFiles,
+      converted: convertedFiles,
+    };
 
     return new NextResponse(JSON.stringify(files), {
       status: 200,
@@ -42,4 +43,23 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export const dynamic = "force-dynamic";
+function getFilesFromDir(directoryPath: string) {
+  const fileNames = fs
+    .readdirSync(directoryPath)
+    .filter((file) => path.extname(file) !== ".txt");
+
+  const files = fileNames.map((file) => {
+    const descriptionFilePath = path.join(directoryPath, `${file}.txt`);
+    let description = "";
+
+    try {
+      description = fs.readFileSync(descriptionFilePath, "utf8");
+    } catch (err) {
+      console.error("Описание не найдено для файла: " + file);
+    }
+
+    return { file, description };
+  });
+
+  return files;
+}
