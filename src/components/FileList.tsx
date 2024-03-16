@@ -63,7 +63,7 @@ export default function FileList({ format }: FileListProps) {
       {files.map((file, index) => (
         <a
           key={index}
-          href={`http://losevpeter.ru/dumps-server/${format}/${file.file}`}
+          href={`https://losevpeter.ru/dumps-server/${format}/${file.file}`}
           download
           ref={(el) =>
             (shadowAnchorRef.current[index] = el as HTMLAnchorElement)
