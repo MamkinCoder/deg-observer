@@ -6,6 +6,7 @@ import {
   AccordionItem,
   Card,
   CardBody,
+  CardFooter,
   CardHeader,
   Divider,
   Link,
@@ -28,20 +29,7 @@ const HomePage = () => {
       <div className="col-span-1 md:col-span-2 text-3xl p-5">
         <h1>Анализ федерального ДЭГа</h1>
       </div>
-      <Card className="col-span-1 md:col-span-1 min-h-[50vh]">
-        <CardHeader>
-          {/* <Accordion variant="bordered" disableIndicatorAnimation>
-            <AccordionItem title="Навигация в графане" indicator={<InfoIcon />}>
-              <div>
-                <ul className=" list-disc ml-4">
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                </ul>
-              </div>
-            </AccordionItem>
-          </Accordion> */}
-        </CardHeader>
+      <Card className="col-span-1 md:col-span-1 md:row-span-2">
         <CardBody>
           <div className="relative pt-[80%]">
             <iframe
@@ -51,8 +39,24 @@ const HomePage = () => {
             ></iframe>
           </div>
         </CardBody>
+        <CardFooter>
+          <Accordion variant="bordered" disableIndicatorAnimation>
+            <AccordionItem
+              title="Навигация в графиках"
+              indicator={<InfoIcon />}
+            >
+              <div>
+                <ul className=" list-disc ml-4">
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                </ul>
+              </div>
+            </AccordionItem>
+          </Accordion>
+        </CardFooter>
       </Card>
-      <Card className="col-span-1 md:col-span-1">
+      <Card className="col-span-1 md:col-span-1 self-start">
         <CardHeader>
           <Accordion
             variant="bordered"
@@ -61,7 +65,7 @@ const HomePage = () => {
             onSelectionChange={setSelectedKeys}
           >
             <AccordionItem key="1" title="Дампы" indicator={<InfoIcon />}>
-              <p className=" text-small">
+              <div className=" text-small">
                 Есть 2 типа дампов: <br />
                 1) исходный, дамп снятый напрямую с ноды наблюдения без
                 изменений. Он только машиночитаемый бизнес логики там нет.
@@ -76,8 +80,16 @@ const HomePage = () => {
                   isExternal
                 >
                   программу-конвертер
+                </Link>{" "}
+                <Divider className="my-3" />
+                <Link
+                  href="https://docs.google.com/document/d/1aTFdMNCiWy1miFoL8_ajAXIbXdI_Y_6_VgbxuzXh93g/edit?pli=1"
+                  className="text-small"
+                  isExternal
+                >
+                  Инструкция по работе с конвертированным дампом
                 </Link>
-              </p>
+              </div>
             </AccordionItem>
           </Accordion>
         </CardHeader>

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  html,
   body {
-    @apply p-3 min-h-screen;
-    min-height: 100vh;
+    @apply p-3 min-h-screen h-[100%];
   }
 }
 
