@@ -60,15 +60,15 @@ const HomePage = () => {
       </div>
       <Card className="col-span-1 md:col-span-1 min-h-[50vh]">
         <CardBody>
-          <div className="relative pt-[80%]">
-            <FlourishEmbed />
+          {/* <div className="relative pt-[80%]"> */}
+          <FlourishEmbed />
 
-            {/* <iframe
+          {/* <iframe
               id="contentFrame"
               src="https://losevpeter.ru/grafana/d/edfqkznlpa77ka/deg?orgId=1&kiosk"
               className="absolute inset-0 w-full h-full"
             ></iframe> */}
-          </div>
+          {/* </div> */}
         </CardBody>
       </Card>
       <Card className="col-span-1 md:col-span-1">
