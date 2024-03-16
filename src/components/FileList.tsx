@@ -40,30 +40,14 @@ export default function FileList() {
 
     setDisabledIndexes((current) => [...current, index]);
 
-    // Programmatically click the "shadow" anchor
     shadowAnchorRef.current[index]?.click();
 
     setTimeout(() => {
       setDisabledIndexes((current) =>
         current.filter((disabledIndex) => disabledIndex !== index)
       );
-    }, 5000); // Re-enable the item after 5 seconds
+    }, 5000);
   };
-
-  // Function to disable an item and then re-enable it after 5 seconds
-  // const handlePress = (index: number) => {
-  //   setDisabledIndexes((currentDisabledIndexes) => [
-  //     ...currentDisabledIndexes,
-  //     index,
-  //   ]);
-  //   setTimeout(() => {
-  //     setDisabledIndexes((currentDisabledIndexes) =>
-  //       currentDisabledIndexes.filter(
-  //         (disabledIndex) => disabledIndex !== index
-  //       )
-  //     );
-  //   }, 5000); // 5000 milliseconds = 5 seconds
-  // };
 
   return (
     <>
@@ -75,17 +59,14 @@ export default function FileList() {
             startContent={<DownloadIcon />}
             onPress={() => handlePress(file, index)}
           >
-            <a href={`/api/getFiles/${file.file}`} download>
-              {file.file}
-            </a>
+            {file.file}
           </ListboxItem>
         ))}
       </Listbox>
-      {/* "Shadow" anchors for handling downloads, hidden from view */}
       {files.map((file, index) => (
         <a
           key={index}
-          href={`/api/getFiles/${file.file}`}
+          href={`http://losevpeter.ru/dumps-server/${file.file}`}
           download
           ref={(el) =>
             (shadowAnchorRef.current[index] = el as HTMLAnchorElement)

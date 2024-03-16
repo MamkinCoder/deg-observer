@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 
 export async function GET(request: NextRequest) {
-  const directoryPath = path.join(process.cwd(), "public", "files");
+  const directoryPath = "/mnt/HC_Volume_100473672/dumps-server";
 
   try {
     const fileNames = fs
