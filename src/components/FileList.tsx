@@ -41,7 +41,7 @@ export default function FileList({ format }: FileListProps) {
 
     setTimeout(() => {
       setDisabledIndexes((current) =>
-        current.filter((disabledIndex) => disabledIndex !== index)
+        current.filter((disabledIndex) => disabledIndex !== index),
       );
     }, 5000);
   };
