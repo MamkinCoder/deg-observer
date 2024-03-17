@@ -40,8 +40,8 @@ export function Charts() {
         <div className="relative h-full">
           <iframe
             id="contentFrame"
-            // src="https://losevpeter.ru/grafana/d/edznlpa77ka/deg?orgId=1&kiosk"
-            src="https://losevpeter.ru/grafana/d/edfqkznlpa77ka/deg?orgId=1&kiosk"
+            src="https://losevpeter.ru/grafana/d/edznlpa77ka/deg?orgId=1&kiosk"
+            // src="https://losevpeter.ru/grafana/d/edfqkznlpa77ka/deg?orgId=1&kiosk"
             className="absolute inset-0 h-full w-full"
           ></iframe>
         </div>

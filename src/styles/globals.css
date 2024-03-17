@@ -5,7 +5,10 @@
 @layer base {
   html,
   body {
-    @apply p-3 min-h-screen h-[100%];
+    @apply h-[100%] min-h-screen;
+  }
+  body {
+    @apply p-3;
   }
 }
 
