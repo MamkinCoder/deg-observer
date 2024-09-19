@@ -2,9 +2,7 @@
 import {
   Card,
   CardHeader,
-  Accordion,
-  AccordionItem,
-  Divider,
+  Image,
   CardBody,
   Table,
   TableHeader,
@@ -13,73 +11,116 @@ import {
   TableRow,
   TableCell,
   Link,
+  Divider,
 } from "@nextui-org/react";
-import InfoIcon from "./info";
+import InfoIcon from "./icons/info";
 import { useState } from "react";
-import FileList from "@/components/FileList";
 
 export function Dumps() {
   const [selectedKeys, setSelectedKeys] = useState(
     new Set<string>(["1"]),
   ) as any;
   return (
-    <>
-      <CardHeader>
-        <Accordion
-          variant="bordered"
-          disableIndicatorAnimation
-          selectedKeys={selectedKeys}
-          onSelectionChange={setSelectedKeys}
-        >
-          <AccordionItem key="1" title="Дампы" indicator={<InfoIcon />}>
-            <div className=" text-small">
-              Есть 2 типа дампов: <br />
-              1) исходный, дамп снятый напрямую с ноды наблюдения без изменений.
-              Он только машиночитаемый бизнес логики там нет.
-              <br />
-              2) Конвертированный дамп, дамп, который прошел конвертацию из
-              исходного в PostgreSQL. Данный тип дампа можно использовать для
-              аналитики. Чтобы конвертировать исходный дамп в конвертированный
-              нужно запустить{" "}
-              <Link
-                href="https://github.com/AlexeiScherbakov/Voting2024Converter/tree/master/src"
-                className="text-small"
-                isExternal
-              >
-                программу-конвертер
-              </Link>{" "}
-              <Divider className="my-3" />
-              <Link
-                href="https://docs.google.com/document/d/1aTFdMNCiWy1miFoL8_ajAXIbXdI_Y_6_VgbxuzXh93g/edit?pli=1"
-                className="text-small"
-                isExternal
-              >
-                Инструкция по работе с конвертированным дампом
-              </Link>
-            </div>
-          </AccordionItem>
-        </Accordion>
+    <Card className="max-w-[800px]">
+      <CardHeader className="flex flex-col gap-2 p-10">
+        <div>
+          <InfoIcon className="mr-2 inline-block text-foreground-500" />
+          Ниже представлены базы данных работы электронного голосования по годам
+          в формате Postgres. Эти дампы были получены путем использования
+          специализированных программ на ноде наблюдения или путем сохранения
+          транзакций с портала наблюдателя{" "}
+          <Link href="https://stat.vybory.gov.ru">stat.vybory.gov.ru</Link>.
+          Данные разделены по бизнес-сущностям для удобства аналитики, UML схема
+          представлена ниже:
+        </div>
+        <Divider />
+        <Image
+          isBlurred
+          alt="db scheme"
+          src="/db_scheme2.png"
+          className="max-h-[50vh]"
+          onClick={() => window.open("/db_scheme.png", "_blank")}
+        />
       </CardHeader>
-      <Divider />
 
       <CardBody>
-        <Table removeWrapper>
+        <Table isStriped>
           <TableHeader>
-            <TableColumn>Исходный</TableColumn>
-            <TableColumn>Конвертированный</TableColumn>
+            <TableColumn>Ссылка</TableColumn>
+            <TableColumn>Комментарий</TableColumn>
           </TableHeader>
           <TableBody>
             <TableRow key="1">
               <TableCell>
-                <FileList format="raw" />
+                <Link
+                  download={"fed_2024_edg_final.sql"}
+                  href="/fed_2024_edg_final.sql"
+                >
+                  fed_2024_edg_final.sql
+                </Link>
               </TableCell>
               <TableCell>
-                <FileList format="converted" />
+                Для президентских комментарий — В блокчейн недогрузили 211к
+                избирателей и из-за это в 5 регионах (Алтайский край, Камчатский
+                край, Новосибирская область, Калининградская область, Томская
+                область) явка выше 100 процентов. Подробнее прочесть можно{" "}
+                <Link
+                  className="text-[1em]"
+                  href="https://habr.com/ru/articles/840192/"
+                >
+                  здесь
+                </Link>
+              </TableCell>
+            </TableRow>
+            <TableRow key="2">
+              <TableCell>
+                <Link
+                  download={"fed_2024_president_final.sql"}
+                  href="/fed_2024_president_final.sql"
+                >
+                  fed_2024_president_final.sql
+                </Link>
+              </TableCell>
+              <TableCell>
+                Выборы ЕДГ 2024 Особых аномалий не обнаружено
+                <br />
+                ЕДГ 2024 — Тестовое Ошибка в данных
+                <br />
+                Президентские 2024 Во время голосования по заявлениям
+                организаторов была массовая атака и из-за этого в первый день
+                система работала нестабильно.
+                <br />
+                В блокчейн недогрузили 211к избирателей и из-за это в 5 регионах
+                (Алтайский край, Камчатский край, Новосибирская область,
+                Калининградская область, Томская область) явка выше 100
+                процентов.
+                <br />
+                Подробнее прочесть можно{" "}
+                <Link
+                  href="https://habr.com/ru/articles/840192/"
+                  target="_blank"
+                >
+                  здесь{" "}
+                </Link>
+                <br />
+                Президентские 2024 — Тестовое Нет данных
+                <br />
+                ЕДГ 2023 Будут в ближайшее время
+                <br />
+                ЕДГ 2023 — Тестовое Нет данных
+                <br />
+                ЕДГ 2022 Нет данных
+                <br />
+                ЕДГ 2022 — Тестовое Нет данных
+                <br />
+                ЕДГ 2021 (Госдума) Нет данных
+                <br />
+                ЕДГ 2021 (Госдума) — Тестовое Нет данных
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </CardBody>
-    </>
+    </Card>
   );
 }
