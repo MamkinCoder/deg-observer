@@ -96,15 +96,7 @@ export function Dumps() {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>
-                <Link
-                  download={"fed_2024_president_final.sql"}
-                  href="db_dumps/fed_2024_president_final.sql"
-                  className="text-[1em]"
-                >
-                  Президентские 2024 — Тестовое
-                </Link>
-              </TableCell>
+              <TableCell>Президентские 2024 — Тестовое</TableCell>
               <TableCell>
                 В процессе голосования выяснилось, что система некорректно
                 работает в Ненецком автономном округе (НАО), так как этот регион
@@ -198,15 +190,7 @@ export function Dumps() {
           <Divider />
 
           <div>
-            <div>
-              <Link
-                download={"fed_2024_president_final.sql"}
-                href="db_dumps/fed_2024_president_final.sql"
-                className="text-[1em]"
-              >
-                Президентские 2024 — Тестовое
-              </Link>
-            </div>
+            <div>Президентские 2024 — Тестовое</div>
             <div>
               В процессе голосования выяснилось, что система некорректно
               работает в Ненецком автономном округе (НАО), так как этот регион
