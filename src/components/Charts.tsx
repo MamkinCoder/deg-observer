@@ -75,6 +75,25 @@ export function Charts() {
           </div>
         </AccordionItem>
       </Accordion>
+      <Accordion variant="shadow">
+        <AccordionItem
+          title={
+            <h2 className="ml-2 flex font-medium">
+              <ChartIcon />
+              Данные федерального ДЭГ единого дня голосования 8-10 сентября 2023{" "}
+            </h2>
+          }
+        >
+          <div className="relative h-[calc(100lvh-100px)]">
+            <iframe
+              id="contentFrame"
+              src="https://losevpeter.ru/grafana/d/adyf4busjwzr4d/edg-2023?orgId=1&amp;kiosk&amp;theme=light"
+              className="absolute inset-0 h-full w-full"
+            ></iframe>
+            {/* <div className="inset-0 h-[600px] w-[1000px] bg-red-500"></div> */}
+          </div>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

@@ -50,20 +50,43 @@ export function Dumps() {
             <TableColumn>Комментарий</TableColumn>
           </TableHeader>
           <TableBody>
-            <TableRow key="1">
+            <TableRow>
               <TableCell>
                 <Link
                   download={"fed_2024_edg_final.sql"}
-                  href="/fed_2024_edg_final.sql"
+                  href="db_dumps/fed_2024_edg_final.sql"
+                  className="text-[1em]"
                 >
-                  fed_2024_edg_final.sql
+                  ЕГД 2024
                 </Link>
               </TableCell>
               <TableCell>
-                Для президентских комментарий — В блокчейн недогрузили 211к
-                избирателей и из-за это в 5 регионах (Алтайский край, Камчатский
-                край, Новосибирская область, Калининградская область, Томская
-                область) явка выше 100 процентов. Подробнее прочесть можно{" "}
+                При первичной аналитике особых аномалий не обнаружено, однако
+                для гарантии отсутствия вмешательства требуется более масштабное
+                исследование.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>ЕГД 2024 — Тестовое</TableCell>
+              <TableCell>Ошибка в данных.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Link
+                  download={"fed_2024_president_final.sql"}
+                  href="db_dumps/fed_2024_president_final.sql"
+                  className="text-[1em]"
+                >
+                  Президентские 2024
+                </Link>
+              </TableCell>
+              <TableCell>
+                Во время голосования по заявлениям организаторов была массовая
+                атака, и из-за этого в первый день система работала нестабильно.
+                В блокчейн недогрузили 211 тысяч избирателей, и из-за этого в 5
+                регионах (Алтайский край, Камчатский край, Новосибирская
+                область, Калининградская область, Томская область) явка выше 100
+                процентов. Подробнее прочесть можно здесь{" "}
                 <Link
                   className="text-[1em]"
                   href="https://habr.com/ru/articles/840192/"
@@ -72,65 +95,55 @@ export function Dumps() {
                 </Link>
               </TableCell>
             </TableRow>
-            <TableRow key="2">
+            <TableRow>
               <TableCell>
                 <Link
                   download={"fed_2024_president_final.sql"}
-                  href="/fed_2024_president_final.sql"
+                  href="db_dumps/fed_2024_president_final.sql"
+                  className="text-[1em]"
                 >
-                  fed_2024_president_final.sql
+                  Президентские 2024 — Тестовое
                 </Link>
               </TableCell>
               <TableCell>
-                Выборы ЕДГ 2024 Особых аномалий не обнаружено
-                <br />
-                ЕДГ 2024 — Тестовое Ошибка в данных
-                <br />
-                Президентские 2024 Во время голосования по заявлениям
-                организаторов была массовая атака и из-за этого в первый день
-                система работала нестабильно.
-                <br />
-                В блокчейн недогрузили 211к избирателей и из-за это в 5 регионах
-                (Алтайский край, Камчатский край, Новосибирская область,
-                Калининградская область, Томская область) явка выше 100
-                процентов.
-                <br />
-                Подробнее прочесть можно{" "}
-                <Link
-                  href="https://habr.com/ru/articles/840192/"
-                  target="_blank"
-                >
-                  здесь{" "}
-                </Link>
+                В процессе голосования выяснилось, что система некорректно
+                работает в Ненецком автономном округе (НАО), так как этот регион
+                матрешка — он является и субъектом федерации, и входит в
+                Архангельскую область одновременно. Поэтому голосование в
+                Ненецком автономном округе перезапускали.
               </TableCell>
             </TableRow>
-            <TableRow key="3">
-              <TableCell>{""}</TableCell>
-              <TableCell>Президентские 2024 — Тестовое Нет данных</TableCell>
+            <TableRow>
+              <TableCell>
+                <Link
+                  download={"fed_2023_edg_final.sql"}
+                  href="db_dumps/fed_2023_edg_final.sql"
+                  className="text-[1em]"
+                >
+                  ЕГД 2023
+                </Link>
+              </TableCell>
+              <TableCell>Нет данных.</TableCell>
             </TableRow>
-            <TableRow key="3">
-              <TableCell>{""}</TableCell>
-              <TableCell>ЕДГ 2023 Будут в ближайшее время</TableCell>
+            <TableRow>
+              <TableCell>ЕГД 2023 — Тестовое</TableCell>
+              <TableCell>Нет данных.</TableCell>
             </TableRow>
-            <TableRow key="3">
-              <TableCell>{""}</TableCell>
-              <TableCell>ЕДГ 2023 — Тестовое Нет данных</TableCell>
+            <TableRow>
+              <TableCell>ЕГД 2022</TableCell>
+              <TableCell>Нет данных.</TableCell>
             </TableRow>
-            <TableRow key="3">
-              <TableCell>{""}</TableCell>
-              <TableCell>ЕДГ 2022 Нет данных</TableCell>
+            <TableRow>
+              <TableCell>ЕГД 2022 — Тестовое</TableCell>
+              <TableCell>Нет данных.</TableCell>
             </TableRow>
-            <TableRow key="3">
-              <TableCell>{""}</TableCell>
-              <TableCell>ЕДГ 2022 — Тестовое Нет данных</TableCell>
+            <TableRow>
+              <TableCell>ЕГД 2021 (Госдума)</TableCell>
+              <TableCell>Нет данных.</TableCell>
             </TableRow>
-            <TableRow key="3">
-              <TableCell>{""}</TableCell>
-              <TableCell>ЕДГ 2021 (Госдума) Нет данных</TableCell>
-            </TableRow>
-            <TableRow key="3">
-              <TableCell>{""}</TableCell>
-              <TableCell>ЕДГ 2021 (Госдума) — Тестовое Нет данных</TableCell>
+            <TableRow>
+              <TableCell>ЕГД 2021 (Госдума) — Тестовое</TableCell>
+              <TableCell>Нет данных.</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -139,16 +152,41 @@ export function Dumps() {
             <div>
               <Link
                 download={"fed_2024_edg_final.sql"}
-                href="/fed_2024_edg_final.sql"
+                href="db_dumps/fed_2024_edg_final.sql"
+                className="text-[1em]"
               >
-                fed_2024_edg_final.sql
+                ЕГД 2024
               </Link>
             </div>
             <div>
-              Для президентских комментарий — В блокчейн недогрузили 211к
-              избирателей и из-за это в 5 регионах (Алтайский край, Камчатский
-              край, Новосибирская область, Калининградская область, Томская
-              область) явка выше 100 процентов. Подробнее прочесть можно{" "}
+              При первичной аналитике особых аномалий не обнаружено, однако для
+              гарантии отсутствия вмешательства требуется более масштабное
+              исследование.
+            </div>
+          </div>
+          <Divider />
+          <div>
+            <div>ЕГД 2024 — Тестовое</div>
+            <div>Ошибка в данных.</div>
+          </div>
+          <Divider />
+          <div>
+            <div>
+              <Link
+                download={"fed_2024_president_final.sql"}
+                href="db_dumps/fed_2024_president_final.sql"
+                className="text-[1em]"
+              >
+                Президентские 2024
+              </Link>
+            </div>
+            <div>
+              Во время голосования по заявлениям организаторов была массовая
+              атака, и из-за этого в первый день система работала нестабильно. В
+              блокчейн недогрузили 211 тысяч избирателей, и из-за этого в 5
+              регионах (Алтайский край, Камчатский край, Новосибирская область,
+              Калининградская область, Томская область) явка выше 100 процентов.
+              Подробнее прочесть можно здесь{" "}
               <Link
                 className="text-[1em]"
                 href="https://habr.com/ru/articles/840192/"
@@ -158,48 +196,70 @@ export function Dumps() {
             </div>
           </div>
           <Divider />
+
           <div>
             <div>
               <Link
                 download={"fed_2024_president_final.sql"}
-                href="/fed_2024_president_final.sql"
+                href="db_dumps/fed_2024_president_final.sql"
+                className="text-[1em]"
               >
-                fed_2024_president_final.sql
+                Президентские 2024 — Тестовое
               </Link>
             </div>
             <div>
-              Выборы ЕДГ 2024 Особых аномалий не обнаружено
-              <br />
-              ЕДГ 2024 — Тестовое Ошибка в данных
-              <br />
-              Президентские 2024 Во время голосования по заявлениям
-              организаторов была массовая атака и из-за этого в первый день
-              система работала нестабильно.
-              <br />
-              В блокчейн недогрузили 211к избирателей и из-за это в 5 регионах
-              (Алтайский край, Камчатский край, Новосибирская область,
-              Калининградская область, Томская область) явка выше 100 процентов.
-              <br />
-              Подробнее прочесть можно{" "}
-              <Link href="https://habr.com/ru/articles/840192/" target="_blank">
-                здесь{" "}
-              </Link>
-              <br />
-              Президентские 2024 — Тестовое Нет данных
-              <br />
-              ЕДГ 2023 Будут в ближайшее время
-              <br />
-              ЕДГ 2023 — Тестовое Нет данных
-              <br />
-              ЕДГ 2022 Нет данных
-              <br />
-              ЕДГ 2022 — Тестовое Нет данных
-              <br />
-              ЕДГ 2021 (Госдума) Нет данных
-              <br />
-              ЕДГ 2021 (Госдума) — Тестовое Нет данных
+              В процессе голосования выяснилось, что система некорректно
+              работает в Ненецком автономном округе (НАО), так как этот регион
+              матрешка — он является и субъектом федерации, и входит в
+              Архангельскую область одновременно. Поэтому голосование в Ненецком
+              автономном округе перезапускали.
             </div>
           </div>
+          <Divider />
+
+          <div>
+            <div>
+              <Link
+                download={"fed_2023_edg_final.sql"}
+                href="db_dumps/fed_2023_edg_final.sql"
+                className="text-[1em]"
+              >
+                ЕГД 2023
+              </Link>
+            </div>
+            <div>Нет данных.</div>
+          </div>
+          <Divider />
+
+          <div>
+            <div>ЕГД 2023 — Тестовое</div>
+            <div>Нет данных.</div>
+          </div>
+          <Divider />
+
+          <div>
+            <div>ЕГД 2022</div>
+            <div>Нет данных.</div>
+          </div>
+          <Divider />
+
+          <div>
+            <div>ЕГД 2022 — Тестовое</div>
+            <div>Нет данных.</div>
+          </div>
+          <Divider />
+
+          <div>
+            <div>ЕГД 2021 (Госдума)</div>
+            <div>Нет данных.</div>
+          </div>
+          <Divider />
+
+          <div>
+            <div>ЕГД 2021 (Госдума) — Тестовое</div>
+            <div>Нет данных.</div>
+          </div>
+          <Divider />
         </div>
       </CardBody>
     </Card>
